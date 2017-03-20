@@ -1,6 +1,7 @@
-class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :update, :destroy]
-
+class Api::V1::UsersController < ApplicationController
+  before_action :authenticate_with_token!, only: [:update, :destroy]
+  respond_to :json
+  
   # GET /users
   def index
     @users = User.all
