@@ -54,8 +54,11 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     :address => "smtp.gmail.com",
     :port => 587,
-    :user_name => "zuimeng1995",
-    :password => "52money1314"
+    :domain => "gmail.com",
+    :user_name => "zuimeng1995@gmail.com",
+    :password => "52money1314",
+    :authentication => :login,
+    :enable_starttls_auto => true
   }
   
   config.action_mailer.default_url_options = { host: 'secure-beach-93135.herokuapp.com'}
