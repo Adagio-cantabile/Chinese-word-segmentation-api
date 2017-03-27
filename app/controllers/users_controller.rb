@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :update, :destroy]
+  skip_before_action :authenticate_request, only: [:create, :confirm_email]
+#  before_action :set_user, only: [:show, :update, :destroy]
 
   # GET /users
   def index
@@ -15,9 +16,9 @@ class UsersController < ApplicationController
 
   # POST /users
   def create
-    @user = User.new(user_params)
-
+    @user = User.new(user_params.merge(password: params[:password], password_confirmation: params[:password_confirmation]))
     if @user.save
+      UserMailer.registration_confirmation(@user).deliver
       render json: @user, status: :created, location: @user
     else
       render json: @user.errors, status: :unprocessable_entity
@@ -46,14 +47,19 @@ class UsersController < ApplicationController
     head 204
   end
 
+  #renders html page here
+  def confirm_email
+    user = User.find_by_confirm_token(params[:id])
+    if user
+      user.email_activate
+      @message = "You account is activated now!"
+    else
+      @message = "Your account should be activated already, if you can't login, please contact us zuimeng1995@gmail.com"
+    end
+  end
+  
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
-    end
-
-    # Only allow a trusted parameter "white list" through.
-    def user_params
-      params.require(:user).permit(:name, :email, :password_digest, :auth_token)
-    end
+  def user_params
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :active, :admin)
+  end
 end
