@@ -39,11 +39,11 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :address => "smtp.gmail.com",
+    :address => "smtp.mailgun.org",
     :port => 587,
-    :domain => 'chinese-word-segmentation.com',
-    :user_name => "zuimeng1995",
-    :password => "52money1314"
+    :domain => 'info.chinese-word-segmentation.club',
+    :user_name => "postmaster@info.chinese-word-segmentation.club",
+    :password => "563d9c97baf3a7eb7f2941a118865386"
   }
 
   #set host to localhost in development

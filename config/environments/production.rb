@@ -52,13 +52,11 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :address => "smtp.gmail.com",
+    :address => "smtp.mailgun.org",
     :port => 587,
-    :domain => "gmail.com",
-    :user_name => "zuimeng1995@gmail.com",
-    :password => "52money1314",
-    :authentication => :login,
-    :enable_starttls_auto => true
+    :domain => 'info.chinese-word-segmentation.club',
+    :user_name => "postmaster@info.chinese-word-segmentation.club",
+    :password => "563d9c97baf3a7eb7f2941a118865386"
   }
   
   config.action_mailer.default_url_options = { host: 'secure-beach-93135.herokuapp.com'}
