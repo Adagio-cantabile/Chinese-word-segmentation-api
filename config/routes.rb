@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   end
   post 'authenticate', to: 'authentication#authenticate'
   resources :users, only: [:index, :create, :show, :update, :destroy]
+
+  post 'segmentation', to: 'word_segmentation#tag'
 end
