@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :history_records
   resources :items
   resources :users do
     member do

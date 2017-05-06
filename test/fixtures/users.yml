@@ -1,6 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  id: 1
   name: Yiwen Gong
   email: zuimeng1995@gmail.com
   password_digest: <%= BCrypt::Password.create('123456', cost: 5) %>
