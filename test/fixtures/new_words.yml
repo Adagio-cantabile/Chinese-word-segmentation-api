@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  word: MyText
+  type: MyText
+  valid: false
+  user_id: MyString
+
+two:
+  word: MyText
+  type: MyText
+  valid: false
+  user_id: MyString
