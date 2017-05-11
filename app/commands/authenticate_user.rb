@@ -17,9 +17,15 @@ class AuthenticateUser
   #return user which is active and password matches
   def user
     user = User.find_by_email(email)
-    return user if user && user.authenticate(password) && user.active
-
-    errors.add :user_authentication, 'invalid credentials'
-    nil
+    #account is not activated
+    if user && user.authenticate(password) && user.active == false
+      errors.add :user_authentication, 'account is not activated'
+      nil
+    elsif user && user.authenticate(password) && user.active
+      return user
+    else
+      errors.add :user_authentication, 'invalid credentials'
+      nil
+    end
   end
 end

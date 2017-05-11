@@ -6,3 +6,11 @@ one:
   email: zuimeng1995@gmail.com
   password_digest: <%= BCrypt::Password.create('123456', cost: 5) %>
   active: true
+
+two:
+  id: 2
+  name: Elena Gong
+  email: 375608371@qq.com
+  password_digest: <%= BCrypt::Password.create('123456', cost: 5) %>
+  active: false
+  

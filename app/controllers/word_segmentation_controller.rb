@@ -2,10 +2,14 @@ class WordSegmentationController < ApplicationController
   require 'bosonnlp'
   
   def tag
+    optimal = params[:optimal]
     nlp = Bosonnlp.new("1zfpyjAs.14787.R6pgq5cZAba5")
     result = nlp.c_tag([params[:word]])
-    history_record = HistoryRecord.new(data: params[:word], before_change: result.first, user_id: @current_user.id)
-    history_record.save!
+    #change into result1, result2, result3
+    unless optimal.to_i == 2
+      history_record = HistoryRecord.new(data: params[:word], before_change: result.first, user_id: @current_user.id)
+      history_record.save!
+    end
     render json: result, status: 200
   end
 
